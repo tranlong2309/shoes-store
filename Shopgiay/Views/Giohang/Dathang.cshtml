@@ -1,0 +1,112 @@
+﻿@using Shopgiay.Models
+@model List<Giohang>
+@{
+    ViewBag.Title = "Dathang";
+    Layout = "~/Views/Shared/_LayoutChung.cshtml";
+}
+<div class="ps-content pt-80 pb-80">
+    <div class="ps-container">
+        <div class="ps-cart-listing">
+            <table class="table ps-cart__table">
+                <thead>
+                    <tr>
+                        <th>All Products</th>
+                        <th>Size</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td><a class="ps-product__preview" href="product-detail.html"><img class="mr-15" src="~/Img/@item.Cover" width="150px">@item.Tengiay</a></td>
+                            @using (Html.BeginForm("Capnhatgiohang", "Giohang", new { @Idgiay = item.IdGiay }))
+                            {
+                                <td>@item.Size</td>
+                                <td>@String.Format("{0:0,0}", item.Dongia)</td>
+                                <td>
+                                    <div class="form-group--number">
+                                        <input class="form-control" min="1" type="number" name="txtSoluong" value="@item.Soluong">
+                                    </div>
+                                </td>
+                                <td>@String.Format("{0:0,0}", item.Thanhtien)</td>
+
+                            }
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+            @{
+                KhachHang kh = (KhachHang)Session["TKKH"];
+            }
+            <div class="ps-cart__actions">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style=" display: block; margin-left: auto; margin-right: auto; width: 40%;">
+                    <div class="ps-checkout__order">
+                        <header>
+                            <h3>Your Order</h3>
+                        </header>
+                        @using (Html.BeginForm())
+                        {
+                            @Html.ValidationSummary(true)
+                            <div class="content">
+                                <table class="table ps-checkout__products">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-uppercase" style="color:white">Họ Tên:</th>
+                                            <th class="text-uppercase " style="color:white">@kh.TenKH</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-uppercase " style="color:white">Địa chỉ:</td>
+                                            <td class="text-uppercase " style="color:white">@kh.DiachiKH</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-uppercase " style="color:white">Số điện thoại:</td>
+                                            <td class="text-uppercase " style="color:white">@kh.SDTKH</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-uppercase " style="color:white">Ngày Đặt:</td>
+                                            <td class="text-uppercase" style="color:white">@DateTime.Now.ToShortDateString()</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-uppercase p-long" style="color:white">Ngày giao hàng:</td>
+                                            <td class="text-uppercase p-long"><input type="date" style="background-color: red" name="ngaygiao" /></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <footer>
+                                <div class="form-group paypal">
+                                    <div class="ps-radio ps-radio--inline">
+                                        <input class="form-control" type="radio" name="payment" id="rdo02">
+                                        <label for="rdo02">Paypal</label>
+                                    </div>
+                                    <ul class="ps-payment-method">
+                                        <li>
+                                            <a href="#"><img src="~/Asset/images/payment/1.png" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="~/Asset/images/payment/2.png" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="~/Asset/images/payment/3.png" alt=""></a>
+                                        </li>
+                                    </ul>
+                                    <button type="submit" class="ps-btn ps-btn--fullwidth">Place Order<i class="ps-icon-next"></i></button>
+                                </div>
+                            </footer>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+

@@ -1,0 +1,30 @@
+﻿@model  List<Shopgiay.Models.history>
+@{
+    ViewBag.Title = "HistoryUser";
+    Layout = "~/Views/Admin/_LayoutAdmin.cshtml";
+}
+<table class="table table-condensed">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Họ Tên</th>
+            <th>Hành Động</th>
+            <th>Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="info">
+                <th scope="row">@item.ID</th>
+                <td>@item.HoTen</td>
+                <td>@item.HD</td>
+                <td>@item.Time</td>
+            </tr>
+        }
+
+
+
+    </tbody>
+</table>
+

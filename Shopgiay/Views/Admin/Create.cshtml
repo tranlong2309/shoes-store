@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Admin/_LayoutAdmin.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="~/Content/fonmLogin/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" />
+</head>
+
+<body>
+    <!-- Form without bootstrap -->
+    <div class="auth-wrapper">
+        <div class="auth-container">
+            <div class="auth-action-left">
+                <div class="auth-form-outer">
+                    <h2 class="auth-form-title">
+                        Create New User
+                    </h2>
+                    <div class="auth-external-container">
+
+                    </div>
+                    @using (Html.BeginForm())
+                    {
+                        @Html.ValidationSummary(true)
+                        <form class="login-form">
+                            @Html.TextBox("NameNew", null, new { @class = "auth-form-input", placeholder = "Name" })
+                            @ViewData["loi1"]
+                            @Html.TextBox("EmailNew", null, new { @class = "auth-form-input", placeholder = "Email" })
+                            @ViewData["loi2"]
+                            <div class="input-icon">
+                                @Html.Password("PassNew", null, new { @class = "auth-form-input", placeholder = "Password" })
+                                @ViewData["loi3"]
+                                <i class="fa fa-eye show-password"></i>
+                            </div>
+                            <div class="footer-action">
+                                <input type="submit" value="Create" class="auth-submit">
+                                <a href="Thongtinuser" class="auth-btn-direct">Quay lại</a>
+
+                            </div>
+                        </form>
+                    }
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="js/common.js"></script>
+</body>
+
+</body>
+
+</html>
+

@@ -1,0 +1,70 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="~/Content/fonmLogin/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" />
+</head>
+<body>
+    <!-- Form without bootstrap -->
+    <div class="auth-wrapper">
+        <div class="auth-container">
+            <div class="auth-action-left">
+                <div class="auth-form-outer">
+                    <h2 class="auth-form-title">
+                        Sign In
+                    </h2>
+                    <div class="auth-external-container">
+                        <div class="auth-external-list">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-google"></i></a></li>
+                                <li><a href="https://www.facebook.com/long.tvl"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+                        <p class="auth-sgt">@ViewBag.Thongbao</p>
+                    </div>
+                    @using (Html.BeginForm())
+                    {
+                        @Html.ValidationSummary(true)
+                        <form class="login-form">
+                            @Html.TextBox("EmailND", null, new { @class = "auth-form-input", placeholder = "Email" })
+                            @ViewData["loi1"]
+                            <div class="input-icon">
+                                @Html.Password("PassND", null, new { @class = "auth-form-input", placeholder = "Password" })
+                                @ViewData["loi2"]
+                                <i class="fa fa-eye show-password"></i>
+                            </div>
+                            <label class="btn active">
+                                <input type="checkbox" name='email1' checked>
+                                <i class="fa fa-square-o"></i><i class="fa fa-check-square-o"></i>
+                                <span> Remember password.</span>
+                            </label>
+                            <div class="footer-action">
+                                <input type="submit" value="Sign In" class="auth-submit">
+                                @Html.ActionLink("Sign Up", "Dangky", "NguoiDung", new { @class = "auth-btn-direct" })
+                            </div>
+                        </form>
+                    }
+                    <div class="auth-forgot-password">
+                        <a href="#">Forfot Password</a>
+                    </div>
+                </div>
+            </div>
+            <div class="auth-action-right">
+                <div class="auth-image">
+                    <img src="~/Content/fonmLogin/assets/vector.jpg" alt="login">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Content/fonmLogin/js/common.js"></script>
+</body>
+</html>

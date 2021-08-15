@@ -1,0 +1,51 @@
+﻿@using Shopgiay.Models
+@using PagedList.Mvc
+@model PagedList.PagedList<Shopgiay.Models.dathang>
+@{
+    ViewBag.Title = "Dondathang";
+    Layout = "~/Views/UserQL/shared/_LayoutUserQL.cshtml";
+}
+<table class="table ps-cart__table">
+    <thead>
+        <tr>
+            <th style="font-weight: bold">Tên Khách Hàng</th>
+            <th>Số điện thoại</th>
+            <th>Địa Chỉ</th>
+            <th>Tên Giày</th>
+            <th>Size</th>
+            <th>Số lượng mua</th>
+            <th>Đơn giá</th>
+            <th>Thanh toán</th>
+            <th>Tình trạng giao hàng</th>
+            <th>Ngày đặt</th>
+            <th>Ngày Giao</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.TenKH</td>
+            <td>@item.SDTKH</td>
+            <td>@item.Diachi</td>
+            <td>@item.TenGiay</td>
+            <td>@item.Size</td>
+            <td>@item.Soluongmua</td>
+            <td>@item.Dongia</td>
+            <td>@item.Dathanhtoan</td>
+            <td>@item.Tinhtranggiaohang</td>
+            <td>@item.Ngaydat</td>
+            <td>@item.Ngaygiao</td>
+
+        </tr>
+        }
+
+    </tbody>
+</table>
+<div class="ps-pagination">
+    <ul class="pagination">
+        <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
+        <li class="active">@Html.PagedListPager(Model, page => Url.Action("Giay", new { page = page }))</li>
+
+    </ul>
+</div>

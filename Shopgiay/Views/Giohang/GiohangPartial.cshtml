@@ -1,0 +1,13 @@
+﻿<div class="ps-cart">
+    <a class="ps-cart__toggle" href="@Url.Action("Giohang","Giohang")"><span><i>@ViewBag.Tongsoluong</i></span><i class="ps-icon-shopping-cart"></i></a>
+    @{ if (Session["TKKH"] == null || Session["TKKH"].ToString() == "")
+        {
+            <a class="ps-cart__toggle" href="@Url.Action("Login","Nguoidung")"><i class="fas fa-user"></i></a>
+        }
+        else
+        {
+
+        }
+    }
+
+</div>

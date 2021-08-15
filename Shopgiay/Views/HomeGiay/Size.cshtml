@@ -1,0 +1,12 @@
+﻿@model List<Shopgiay.Models.sanphamHome>
+
+        <select class="ps-select selectpicker" name="txtsize">
+            <option value="1" name="txtsi">Select Size</option>
+            @foreach (var s in Model)
+            {
+                <option value="@s.Size">@s.Size</option>
+             
+            }
+        </select>
+   
+

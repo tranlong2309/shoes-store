@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "DoiMK";
+    Layout = "~/Views/UserQL/shared/_LayoutUserQL.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    
+            <label  style="color:red">@ViewBag.Thongbao1</label>
+   
+      
+               
+                    @Html.Password("Password", null, new { @class = "form-control", placeholder = "Password" })
+                    @ViewData["loi1"]
+      
+      
+                    @Html.Password("PassNew", null, new { @class = "form-control", placeholder = "Password mới" })
+                    @ViewData["loi2"]
+       
+                    @Html.Password("PassNewL", null, new { @class = "form-control", placeholder = "Nhập lại pass mới" })
+                    @ViewData["loi3"]
+         
+
+                <button type="submit" class="btn btn-danger">SUBMIT</button>
+                @Html.ActionLink("Quay Lại", "Index", "User", new { @class = "btn btn-danger" })
+  
+ 
+}
+

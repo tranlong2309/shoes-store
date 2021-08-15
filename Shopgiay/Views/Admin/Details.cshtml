@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Admin/_LayoutAdmin.cshtml";
+}
+
+<div class="card profile-card">
+    <div class="profile-header">&nbsp;</div>
+    <div class="profile-body">
+        <div class="image-area">
+            <img src="https://icon2.cleanpng.com/20180408/edw/kisspng-user-computer-icons-gravatar-blog-happy-woman-5aca6d038826d9.7357010215232156195577.jpg" alt="adminbsb - profile image" />
+        </div>
+        <div class="content-area">
+            <h3>@Model.HoTen</h3>
+
+        </div>
+    </div>
+    <div class="profile-footer">
+        <ul>
+            <li>
+                <span>Email:</span>
+                <span>@Model.Email</span>
+            </li>
+            <li>
+                <span>Password:</span>
+                <span>@Model.Pass</span>
+            </li>
+
+        </ul>
+        @Html.ActionLink("Quay Lại", "Thongtinuser", "Admin", new { @class = "btn btn-primary btn-lg waves-effect btn-block" })
+    </div>
+</div>
+
+

@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Shopgiay" Class="MydataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-5516D1M\SQLEXPRESS;Initial Catalog=Shopgiay;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ShopgiayConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Cover" Member="Covers">
+    <Type Name="Cover">
+      <Column Name="IDCover" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CoverH" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Cover1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Cover2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Cover3" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CTGiay" Member="CTGiays">
+    <Type Name="CTGiay">
+      <Column Name="IDGiay" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDSize" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Soluongsize" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Giay_CTGiay" Member="Giay" ThisKey="IDGiay" OtherKey="IDGiay" Type="Giay" IsForeignKey="true" />
+      <Association Name="Size_CTGiay" Member="Size" ThisKey="IDSize" OtherKey="IDSize" Type="Size" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Dondathang" Member="Dondathangs">
+    <Type Name="Dondathang">
+      <Column Name="IDDondathang" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IDKH" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Dathanhtoan" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Tinhtranggiaohang" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Ngaydat" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Ngaygiao" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Dondathang_CTHD" Member="CTHDs" ThisKey="IDDondathang" OtherKey="IDDondathang" Type="CTHD" />
+      <Association Name="KhachHang_Dondathang" Member="KhachHang" ThisKey="IDKH" OtherKey="IDKH" Type="KhachHang" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Giay" Member="Giays">
+    <Type Name="Giay">
+      <Column Name="IDGiay" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IDThuonghieu" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Tengiay" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Giaban" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Mota" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Ngaycapnhap" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Soluongton" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Cover1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Cover2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Cover3" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Cover4" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="Giay_CTGiay" Member="CTGiays" ThisKey="IDGiay" OtherKey="IDGiay" Type="CTGiay" />
+      <Association Name="Giay_CTHD" Member="CTHDs" ThisKey="IDGiay" OtherKey="IDGiay" Type="CTHD" />
+      <Association Name="Thuonghieu_Giay" Member="Thuonghieu" ThisKey="IDThuonghieu" OtherKey="IDThuonghieu" Type="Thuonghieu" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KhachHang" Member="KhachHangs">
+    <Type Name="KhachHang">
+      <Column Name="IDKH" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenKH" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="DiachiKH" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="SDTKH" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Pass" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="KhachHang_Dondathang" Member="Dondathangs" ThisKey="IDKH" OtherKey="IDKH" Type="Dondathang" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Size" Member="Sizes">
+    <Type Name="Size">
+      <Column Name="IDSize" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SizeGiay" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="Size_CTGiay" Member="CTGiays" ThisKey="IDSize" OtherKey="IDSize" Type="CTGiay" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Thuonghieu" Member="Thuonghieus">
+    <Type Name="Thuonghieu">
+      <Column Name="IDThuonghieu" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenThuonghieu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Thuonghieu_Giay" Member="Giays" ThisKey="IDThuonghieu" OtherKey="IDThuonghieu" Type="Giay" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CTHD" Member="CTHDs">
+    <Type Name="CTHD">
+      <Column Name="IDDondathang" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDGiay" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Size" Type="System.Double" DbType="Float NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Soluong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Dongia" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Association Name="Dondathang_CTHD" Member="Dondathang" ThisKey="IDDondathang" OtherKey="IDDondathang" Type="Dondathang" IsForeignKey="true" />
+      <Association Name="Giay_CTHD" Member="Giay" ThisKey="IDGiay" OtherKey="IDGiay" Type="Giay" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Account1" Member="Account1s">
+    <Type Name="Account1">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Pass" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="HoTen" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Follow" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Account1_TTLS" Member="TTLS" ThisKey="UserID" OtherKey="UserID" Type="TTLS" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TTLS" Member="TTLS">
+    <Type Name="TTLS">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ActionID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Time" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Account1_TTLS" Member="Account1" ThisKey="UserID" OtherKey="UserID" Type="Account1" IsForeignKey="true" />
+      <Association Name="HD_TTLS" Member="HD" ThisKey="ActionID" OtherKey="ActionID" Type="HD" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HD" Member="HDs">
+    <Type Name="HD">
+      <Column Name="ActionID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="HD_TTLS" Member="TTLS" ThisKey="ActionID" OtherKey="ActionID" Type="TTLS" />
+    </Type>
+  </Table>
+</Database>
