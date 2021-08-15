@@ -1,2 +1,2 @@
 # shoes-store
-this is project form java
+this is project form asp.net
